@@ -1,11 +1,20 @@
-while True:
+resp = 'S'
+soma = quant = media = maior = menor = 0
+while resp in 'Ss':
     try:
         num = int(input('Digite um número: '))
-        media = num + num
-        media = media / media
-        opcao = str(input('Quer continuar? [S/N]: ')).upper()
-        if opcao == 'N':
-            break
+        soma += num
+        quant += 1
+        if quant == 1:
+            maior = menor = num
+        else:
+            if num > maior:
+                maior = num
+            if num < menor:
+                menor = num
+        resp = input('Quer continuar? [S/N]: ').upper().strip()[0]
     except ValueError:
         print('Valores digitados inválidos!')
-print('A média entre os valores é {}'.format(media))
+media = soma / quant
+print('A média entre os {} valores é {}'.format(quant, media))
+print('O maior valor foi {} e o menor foi {}'.format(maior, menor))
