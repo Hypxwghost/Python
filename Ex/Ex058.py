@@ -32,7 +32,6 @@ while True:
             print('Mais... Tente mais uma vez.')
         elif jogador > pc2 and opcao == 1:
             print('Menos... Tente mais uma vez.')
-            print(pc2)
         else:
             print('\033[36mGANHEI!,mais sorte na próxima !\033[m')
     except ValueError:
