@@ -3,9 +3,11 @@ from time import sleep
 pc = 1
 jogador = 0
 contador = 0
+pc2 = randint(0, 10)
 opcao = int(input('''Digite um opção para selecionar a dificuldade:
 [1] Fácil
-[2] Dificil'''))
+[2] Dificil
+[3] Ultimate'''))
 while True:
     try:
         contador += 1
@@ -17,17 +19,20 @@ while True:
         jogador = int(input('Em que número eu "pensei?"'))
         print('PROCESSANDO...')
         sleep(1)
-        if jogador == pc:
+        if jogador == pc or jogador == pc2:
             print('\033[4;34mPARABÉNS! Você conseguiu me vencer após {} tentativas!\033[m'.format(contador))
             opcao2 = input('S- Continuar \nN- Sair').upper()
             if opcao2 == 'N':
                 break
-            else:
-                pass
-        elif jogador < pc and opcao == 1:
+        elif jogador < pc and opcao == 3:
             print('\033[32mMais... Tente mais uma vez.\033[m')
-        elif jogador > pc and opcao == 1:
+        elif jogador > pc and opcao == 3:
             print('\033[34mMenos... Tente mais uma vez.\033[m')
+        elif jogador < pc2 and opcao == 1:
+            print('Mais... Tente mais uma vez.')
+        elif jogador > pc2 and opcao == 1:
+            print('Menos... Tente mais uma vez.')
+            print(pc2)
         else:
             print('\033[36mGANHEI!,mais sorte na próxima !\033[m')
     except ValueError:

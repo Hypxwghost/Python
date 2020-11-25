@@ -22,8 +22,6 @@ while True:
                 print('O número {} é maior'.format(num2))
             else:
                 print('Os dois números são iguais!')
-        elif opcao == 4:
-            pass
         elif opcao == 5:
             break
         else:
