@@ -1,6 +1,6 @@
 # script para calcular o valor de delta
 def raizes(a, b, c):
-    d = (b**2 - 4*a*c)
+    d = (b ** 2 - 4 * a * c)
     print("O valor de delta é igual a {}".format(d))
 
 
@@ -12,5 +12,5 @@ if __name__ == '__main__':
         raizes(a, b, c)
 
         continua = input('Q -sair /n Enter -Continuar')
-        if (continua == 'q'):
+        if continua == 'q':
             break
