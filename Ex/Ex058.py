@@ -7,7 +7,8 @@ pc2 = randint(0, 10)
 opcao = int(input('''Digite um opção para selecionar a dificuldade:
 [1] Fácil
 [2] Dificil
-[3] Ultimate'''))
+[3] Ultimate
+# todo adicionar nova dificuldade "impossivel"'''))
 while True:
     try:
         contador += 1
