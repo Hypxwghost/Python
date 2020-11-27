@@ -4,4 +4,4 @@ while sexo not in 'MmFf':
         sexo = input('Dados inválidos!.Digite seu sexo corretamente: ').upper().strip()[0]
     except ValueError:
         print('Digite uma idade válida!')
-print('Seco {} regstrado com sucesso'.format(sexo))
+print('Sexo {} regstrado com sucesso'.format(sexo))
