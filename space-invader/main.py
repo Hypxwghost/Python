@@ -237,7 +237,6 @@ def main():
             if collide(enemy, player):
                 player.health -= 10
                 enemies.remove(enemy)
-
             elif enemy.y + enemy.get_height() > HEIGHT:
                 lives -= 1
                 enemies.remove(enemy)
@@ -260,4 +259,4 @@ def main_menu():
                 main()
     pygame.quit()
 
-main()
+main_menu()
