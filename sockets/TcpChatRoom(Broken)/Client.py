@@ -46,7 +46,8 @@ def write():
         if message[len(nickname)+2:].startswith('/'):
             if nickname == 'admin':
                 if message[len(nickname)+2:].startswith('/kick'):
-                    client.send(f'KICK {message[len(nickname)+2+6:]}'.encode('ascii'))
+                    client.send(
+                        f'KICK {message[len(nickname)+2+6:]}'.encode('ascii'))
                 elif message[len(nickname)+2:].startswith('/ban'):
                     client.send(
                         f'BAN {message[len(nickname)+2+5:]}'.encode('ascii'))
