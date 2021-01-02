@@ -1,1 +1,3 @@
 django/djangoteste/db.sqlite3
+django/djangoteste/djangoteste/settings.py
+.gitignore
