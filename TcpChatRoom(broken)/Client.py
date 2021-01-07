@@ -4,7 +4,7 @@ import threading
 nickname = input('Choose a nickname: ')
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(('0.0.0.0',60001))
+client.connect(('0.0.0.0',60000))
 
 quit = ['!QUIT','!Quit','!quit','!EXIT','!Exit','!exit']
 
@@ -25,6 +25,7 @@ def write():
         if message in quit:
             client.send('!QUIT'.encode('ascii'))
         else:
+            print(message, type(message))
             client.send(message)
 
 receive_thread = threading.Thread(target=receive)
