@@ -65,11 +65,20 @@ for root, dirs, files in os.walk(caminho):
 
             for line in script_code:
                 linhas_cont_js += 1
+                
+# Solução temporaria,ate eu achar uma melhor ._.
 
-print(f'Você tem {linhas_cont_py} linhas de codigo em {file_cont_py} arquivos .py')
-print(f'Você tem {linhas_cont_md} linhas em {file_cont_md} arquivos .md')
-print(f'Você tem {linhas_cont_txt} linhas em {file_cont_txt} arquivos .txt')
-print(f'Você tem {linhas_cont_c} linhas em {file_cont_c} arquivos .c ')
-print(f'Você tem {linhas_cont_html} linhas em {file_cont_html} arquivos .html')
-print(f'Você tem {linhas_cont_css} linhas em {file_cont_css} arquivos .css')
-print(f'Você tem {linhas_cont_js} linhas em {file_cont_js} arquivos .js')
+if linhas_cont_py != 0:
+    print(f'Você tem {linhas_cont_py} linhas de codigo em {file_cont_py} arquivos .py')
+if linhas_cont_md != 0:
+    print(f'Você tem {linhas_cont_md} linhas em {file_cont_md} arquivos .md')
+if linhas_cont_txt != 0:
+    print(f'Você tem {linhas_cont_txt} linhas em {file_cont_txt} arquivos .txt')
+if linhas_cont_c != 0:
+    print(f'Você tem {linhas_cont_c} linhas em {file_cont_c} arquivos .c ')
+if linhas_cont_html != 0:
+    print(f'Você tem {linhas_cont_html} linhas em {file_cont_html} arquivos .html')
+if linhas_cont_css != 0:
+    print(f'Você tem {linhas_cont_css} linhas em {file_cont_css} arquivos .css')
+if linhas_cont_js != 0:
+    print(f'Você tem {linhas_cont_js} linhas em {file_cont_js} arquivos .js')
