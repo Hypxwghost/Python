@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 
 def google_images_download(directory, search, num_of_img):
-    
+
     search_mod = search.upper()
     search_mod = search_mod.split()
 
@@ -36,6 +36,7 @@ def google_images_download(directory, search, num_of_img):
             soup = BeautifulSoup(response.text, 'html.parser')
 
             images = soup.find_all('img')
+
             for image in images:
                 if i == num_of_img:
                     break
@@ -71,9 +72,11 @@ def google_images_download(directory, search, num_of_img):
             response = requests.get(urln)
             soup = BeautifulSoup(response.text, 'html.parser')
             table = soup.find_all('table', attrs={'class': 'TxbwNb'})
+
             for links in table:
                 links_list.append(links.a.get('href'))
             links_list = [sites[7:sites.index('&')] for sites in links_list]
+
             for link in links_list:
                 if i == num_of_img:
                     break
@@ -83,6 +86,7 @@ def google_images_download(directory, search, num_of_img):
                     soup = BeautifulSoup(response.text, 'html.parser')
 
                     images = soup.find_all('img')
+                    
                     for image in images:
                         if i == num_of_img:
                             break
@@ -91,10 +95,12 @@ def google_images_download(directory, search, num_of_img):
                         elif image.get('src') in repeat_img:
                             pass
                         else:
-                            search_comp = [i in image.get('src').upper() for i in search_mod]
+                            search_comp = [i in image.get(
+                                'src').upper() for i in search_mod]
                             if search_comp.count(True) == len(search_comp) and 'http' in image.get('src'):
                                 with open(f'{directory}/{search.lower()}_{i}.png', 'wb') as f:
-                                    img_response = requests.get(image.get('src'))
+                                    img_response = requests.get(
+                                        image.get('src'))
                                     if img_response.status_code == 200:  # sucess
                                         if i == num_of_img:
                                             break
@@ -116,6 +122,8 @@ def google_images_download(directory, search, num_of_img):
     print('')
     print(f'{i} images were downloaded')
     print('')
+
+
 if __name__ == '__main__':
     while True:
         print(50*'=')
@@ -128,9 +136,9 @@ if __name__ == '__main__':
         num_of_img = int(input('How many images do you want to download? '))
         print('')
         print('Downloading...Check your directory')
-        
+
         google_images_download(directory, search, num_of_img)
-        
+
         exit_question = str(input('Do you want to quit? [Y/N]'))
         if exit_question.upper()[0] == 'Y':
             print('Bye!')

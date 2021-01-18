@@ -1,9 +1,12 @@
 # This script is not 100% functional,some videos have no audio !
 import pytube
+
 filetype = int(input('''File type:
             [1] - Mp4/video
             [2] - Mp4/audio'''))
+
 video_list = []
+
 while True:
     url = input('Enters URLs: [Terminate by "STOP"]')
     if url == 'STOP':
@@ -60,7 +63,8 @@ for x, video in enumerate(video_list):
                                     print('\033[4;31mAll downloads failed,verify URL or try another video')
     except:
         print('Everything failed')
-if filetype == 2: # audio
+        
+if filetype == 2:  # audio
     try:
         print('Downloading..')
         stream = v.streams.get_by_itag(140)

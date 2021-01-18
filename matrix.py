@@ -8,11 +8,11 @@ from random import randrange, choice
 
 pygame.init()
 
-WHITE = (255,255,255)
-BLACK = (0,0,0)
-GREEN = (0,255,0)
-RED = (255,0,0)
-BLUE = (0,0,255)
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+GREEN = (0, 255, 0)
+RED = (255, 0, 0)
+BLUE = (0, 0, 255)
 COLORS = [GREEN, RED, BLUE]
 color_change = 0
 
@@ -28,7 +28,8 @@ repeat_list = []
 number_of_obj = 20
 generate = False
 
-letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','x','z','w','y','0','1','2','3','4','5','6','7','8','9']
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
+           'r', 's', 't', 'u', 'v', 'x', 'z', 'w', 'y', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Matrix Animation')
@@ -36,6 +37,7 @@ pygame.display.set_caption('Matrix Animation')
 font = pygame.font.SysFont('arial', FONT_SIZE, True, True)
 #message = 'hello world'
 #text = font.render(message, True, GREEN)
+
 
 class Codeline:
     def __init__(self):
@@ -60,7 +62,8 @@ class Codeline:
         if self.ypos > SCREEN_HEIGHT or len(self.ypos_list) > 20:
             message = ' '
             text = font.render(message, True, WHITE)
-            screen.fill(BLACK, (self.xpos, self.ypos_list[0], text.get_width() + FONT_SIZE, text.get_height()* self.fill))
+            screen.fill(BLACK, (self.xpos, self.ypos_list[0], text.get_width(
+            ) + FONT_SIZE, text.get_height() * self.fill))
             if text.get_height() * self.fill > len(self.ypos_list) * text.get_height():
                 self.letters_list.clear()
             else:
@@ -71,8 +74,10 @@ class Codeline:
             self.ypos_list.append(self.ypos)
             message = f'{self.letters_list[-1]}'
             text = font.render(message, True, WHITE)
-            screen.fill(BLACK, (self.xpos, self.ypos_list[-1], text.get_width()+FONT_SIZE, text.get_height()))
+            screen.fill(
+                BLACK, (self.xpos, self.ypos_list[-1], text.get_width()+FONT_SIZE, text.get_height()))
             screen.blit(text, (self.xpos, self.ypos_list[-1]))
+
 
 def create_multiples_obj(obj_list, number_of_obj, generate):
     if generate:
@@ -95,6 +100,7 @@ def create_multiples_obj(obj_list, number_of_obj, generate):
             i.draw_codeline()
             i.desloc_codeline()
 
+
 clock = pygame.time.Clock()
 initial_time = 0
 current_time = 0
@@ -110,11 +116,11 @@ while True:
 
     current_time = pygame.time.get_ticks()
 
-    if current_time - color_time > 10000: #10 seconds
+    if current_time - color_time > 10000:  # 10 seconds
         color_change = (color_change + 1) % len(COLORS)
         color_time = pygame.time.get_ticks()
 
-    if current_time - initial_time > 200: #0.2 seconds
+    if current_time - initial_time > 200:  # 0.2 seconds
         generate = True
         initial_time = pygame.time.get_ticks()
 
