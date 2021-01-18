@@ -6,6 +6,8 @@ linhas_cont_py = file_cont_py = linhas_cont_md = file_cont_md = linhas_cont_txt 
 
 cont = 0
 
+extension = ['.py', '.txt', '.md', '.js', '.html', '.css', '.c']
+
 caminho = os.path.dirname(os.path.realpath(__file__))
 print(f'Pegando arquivos em: {caminho}')
 sleep(2)
@@ -68,10 +70,16 @@ for root, dirs, files in os.walk(caminho):
             for line in script_code:
                 linhas_cont_js += 1
                 
-# Solução temporaria,ate eu achar uma melhor ._.
+lista = [ 
+            [linhas_cont_py, file_cont_py],
+            [linhas_cont_txt, file_cont_txt], 
+            [linhas_cont_md, file_cont_md], 
+            [linhas_cont_js, file_cont_js], 
+            [linhas_cont_html, file_cont_html], 
+            [linhas_cont_css, file_cont_css], 
+            [linhas_cont_c, file_cont_c] 
+        ]
 
-lista = [[linhas_cont_py, file_cont_py], [linhas_cont_txt, file_cont_txt], [linhas_cont_md, file_cont_md], [linhas_cont_js, file_cont_js], [linhas_cont_html, file_cont_html], [linhas_cont_css, file_cont_css], [linhas_cont_c, file_cont_c]]
-extension = ['.py', '.txt', '.md', '.js', '.html', '.css', '.c']
 for item in lista:
     cont += 1
     if item[1] > 0:
