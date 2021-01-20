@@ -1,17 +1,10 @@
-frase = 'pão de queijo lorem ipsum'.lower().replace(' ','')
+txt = input('Digite uma palavra/frase: ').strip().replace(' ', '')
 
-num = 0
+char_list = [char for char in txt]
+char_infos = list()
 
-letra_list = []
-letra_repetida = []
+for char in list(dict.fromkeys(char_list)):
+    char_infos.append([char, char_list.count(char)])
 
-for letra in frase:
-    if letra in letra_list:
-        if letra in letra_repetida:
-            pass
-        else:
-            print(letra, num)
-            letra_repetida.append(letra)
-    else:
-        print(letra, ':', 1)
-        letra_list.append(letra)
+for item in char_infos:
+    print(*item, sep=': ')
