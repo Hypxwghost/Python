@@ -51,6 +51,7 @@ class Sapo(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, (128 * 3, 64 * 3))
 
 todas_as_sprites = pygame.sprite.Group()
+
 sapo = Sapo()
 todas_as_sprites.add(sapo)
 
