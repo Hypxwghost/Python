@@ -23,7 +23,7 @@ y_cobra = int(altura/2)
 
 velocidade = 5
 
-comprimento_inicial = 100
+comprimento_inicial = 5
 
 morreu = False
 
