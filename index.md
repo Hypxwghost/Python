@@ -14,7 +14,7 @@
 ### [Tic Tac Toe Game](https://github.com/Hypxwghost/Python/tree/master/Tic-Tac-Toe)
 ### [Spam and Autoclick bot](https://github.com/Hypxwghost/Python/tree/master/bot)
 ### [Keyloggers](https://github.com/Hypxwghost/Python/blob/master/Keylogger.py)
-### [ and Self replicating virus .0.](https://github.com/Hypxwghost/Python/blob/master/Self%20replicating%20virus.py)
+### [ and a Self replicating virus .0.](https://github.com/Hypxwghost/Python/blob/master/Self%20replicating%20virus.py)
 
 ---
 
