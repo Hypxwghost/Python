@@ -16,3 +16,4 @@ def key_handler(key):
 
 with Listener(on_press=key_handler) as listener:
     listener.join()
+
