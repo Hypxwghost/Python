@@ -1,5 +1,6 @@
 # Welcome to my Python repository !
 ## Here you will find my scripts projects and tests made in python !
+<img src='https://img.shields.io/github/languages/code-size/Hypxwghost/Python?color=pink&logo=python&logoColor=yellow'> <img src="https://img.shields.io/github/repo-size/Hypxwghost/Python?color=pink&logo=github&logoColor=red"> <img src='https://img.shields.io/tokei/lines/github/Hypxwghost/Python?color=pink&logo=github&logoColor=blue'> <img src='https://img.shields.io/github/commit-activity/m/Hypxwghost/Python?logo=github'> <img src='https://img.shields.io/github/last-commit/Hypxwghost/Python?color=pink&logo=github&logoColor=green'>
 
 ### You can clone this repo with:
 
