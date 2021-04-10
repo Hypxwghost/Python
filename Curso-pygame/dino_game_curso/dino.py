@@ -1,4 +1,4 @@
-# Script do curso pygame video 14-18 do João Tinti https://www.youtube.com/watch?v=OxenBMy13AM&list=WL&index=14
+# Script do curso pygame video 21 do João Tinti https://www.youtube.com/watch?v=OxenBMy13AM&list=WL&index=14
 
 import os
 import pygame
@@ -26,9 +26,33 @@ sprite_sheet = pygame.image.load(os.path.join(diretorio_imagens, 'dinoSpriteshee
 
 som_colisao = pygame.mixer.Sound(os.path.join(diretorio_sons, 'death_sound.wav'))
 som_colisao.set_volume(1)
+
+som_pontuação = pygame.mixer.Sound(os.path.join(diretorio_sons, 'score_sound.wav'))
+som_pontuação.set_volume(.3)
+
 colidiu = False
 
 escolha_obstaculo = choice([0, 1])
+
+pontos = 0
+
+velocidade_jogo = 10
+
+def exibe_mensagem(msg, tamanho, cor):
+    fonte = pygame.font.SysFont('cascadia code', tamanho, True, False)
+    mensagem = f'{msg}'
+    texto_formatado = fonte.render(mensagem, True, cor)
+    return texto_formatado
+
+def reiniciar_jogo():
+    global pontos, velocidade_jogo, colidiu, escolha_obstaculo
+    pontos = 0
+    velocidade_jogo = 10
+    colidiu = False
+    dino.rect.y = ALTURA - 64 - 96//2
+    dino.pulo = False
+    cacto.rect.x = dino_voador.rect.x = LARGURA
+    escolha_obstaculo = choice([0, 1])    
 
 class Dino(pygame.sprite.Sprite):
     def __init__(self):
@@ -84,7 +108,7 @@ class Nuvens(pygame.sprite.Sprite):
         if self.rect.topright[0] < 0:
             self.rect.x = LARGURA
             self.rect.y = randrange(50, 200, 50)
-        self.rect.x -= 10
+        self.rect.x -= velocidade_jogo
 
 
 class Chao(pygame.sprite.Sprite):
@@ -117,7 +141,7 @@ class Cacto(pygame.sprite.Sprite):
         if self.escolha == 0:
             if self.rect.topright[0] < 0:
                 self.rect.x = LARGURA
-            self.rect.x -= 10
+            self.rect.x -= velocidade_jogo
 
 
 class DinoVoador(pygame.sprite.Sprite):
@@ -141,7 +165,7 @@ class DinoVoador(pygame.sprite.Sprite):
         if self.escolha == 1:
             if self.rect.topright[0] < 0:
                 self.rect.x = LARGURA
-            self.rect.x -= 10
+            self.rect.x -= velocidade_jogo
 
         if self.index_lista > 1:
             self.index_lista = 0
@@ -186,11 +210,14 @@ while True:
             exit()
 
         if event.type == KEYDOWN:
-            if event.key == K_SPACE:
+            if event.key == K_SPACE and colidiu == False:
                 if dino.rect.y != dino.pos_y_inicial:
                     pass
                 else:
                     dino.pular()
+            
+            if event.key == K_r and colidiu == True:
+                reiniciar_jogo()
 
     colisoes = pygame.sprite.spritecollide(dino, grupo_obstaculos, False, pygame.sprite.collide_mask)
 
@@ -208,8 +235,25 @@ while True:
         colidiu = True
 
     if colidiu == True:
-        pass
+        if pontos % 100 == 0:
+            pontos += 1
+        game_over = exibe_mensagem('GAME OVER', 40, (0, 0, 0))
+        tela.blit(game_over, (LARGURA // 2, ALTURA // 2))
+        restart = exibe_mensagem('Pressione r para reiniciar', 18, (0, 0, 0))
+        tela.blit(restart, (LARGURA // 2, (ALTURA // 2) + 60))
+
     else:
+        pontos += 1
         todas_as_sprites.update()
-    
+        texto_pontos = exibe_mensagem(pontos, 30, (0, 0, 0))
+
+    if pontos % 100 == 0:
+        som_pontuação.play()
+        if velocidade_jogo >= 23:
+            velocidade_jogo += 0
+        else:
+            velocidade_jogo += 1
+
+    tela.blit(texto_pontos, (520, 30))
+
     pygame.display.flip()
