@@ -1,13 +1,26 @@
-import random
+from random import sample
 
 uppercase_letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 lowercase_letters = uppercase_letters.lower()
 digits = '0123456789'
-symbols = '!@#$%*()_-+=§,.<>;:/?[]~|\\+'
+symbols = '!@#$%*()_-+=§,.<>;:/?[]~|+'
 
-upper, lower, nums, syms = True, True, True, True
+length = int(input("length: "))
+amount = int(input("amount: "))
+
+a = []
+
+count = 0
+
+print("upper, lower, nums, symbols [1- True / NONE/NULL - False]")
+
+for x in range(4):
+    a.append(input(">> "))
+print(f'{a}\n')
 
 all = ' '
+
+upper, lower, nums, syms = a
 
 if upper:
     all += uppercase_letters
@@ -18,9 +31,11 @@ if nums:
 if syms:
     all += symbols
 
-length = 20
-amount = 15
-
 for x in range(amount):
-    password = ''.join(random.sample(all, length))
-    print(password)
+    try:
+        count += 1
+        password = ''.join(sample(all, length)).replace(' ', '')
+        print(f'{count} >> {password}')
+    except ValueError:
+        print("Length too high!")
+        break
