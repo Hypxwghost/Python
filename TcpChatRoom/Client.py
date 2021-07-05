@@ -3,6 +3,7 @@ import socket
 import threading
 
 from getpass import getpass
+
 # Choosing nickname
 nickname = input('Choose your nickname: ')
 if nickname == 'admin':

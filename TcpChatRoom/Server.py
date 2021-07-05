@@ -44,6 +44,7 @@ def handle(client):
             
             else:
                 broadcast(message)
+                print(message)
         except:
             if client in clients:
                 # Removing And Closing Clients
