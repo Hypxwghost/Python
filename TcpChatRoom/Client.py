@@ -4,6 +4,8 @@ import threading
 
 from getpass import getpass
 
+from datetime import datetime
+
 # Choosing nickname
 nickname = input('Choose your nickname: ')
 if nickname == 'admin':
@@ -13,7 +15,14 @@ if nickname == 'admin':
 client =  socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(('127.0.0.1', 55555))
 
+# variables
 stop_thread = False
+
+# Gets actual time
+def actualTime():
+    now = datetime.now()
+    nowf = now.strftime('%H:%M:%S')
+    return nowf
 
 # listening to server and sending nickname
 def receive():
@@ -43,7 +52,7 @@ def receive():
                     stop_thread = True
 
             else:
-                print(message)
+                print(f"{actualTime()}: {message}")
                 
         except:
             # close connection when error

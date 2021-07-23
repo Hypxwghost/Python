@@ -1,5 +1,8 @@
+import datetime
 import socket
 import threading
+
+from datetime import datetime
 
 # Connection Data
 host = '127.0.0.1'
@@ -18,6 +21,12 @@ nicknames = []
 def broadcast(message):
     for client in clients:
         client.send(message)
+
+# Gets actual time
+def actualTime():
+    now = datetime.now()
+    nowf = now.strftime('%H:%M:%S')
+    return nowf
         
 # Handling Messages From Clients
 def handle(client):
@@ -25,26 +34,32 @@ def handle(client):
         try:
             # Broadcasting Messages
             msg = message = client.recv(1024)
-            if msg.decode('ascii').startswith('KICK'):
-                if nicknames[clients.index(client)] == 'admin':
-                    name_to_kick = msg.decode('ascii')[5:]
-                    kick_user(name_to_kick)
-                else:
-                    client.send('Command was refused!'.encode('ascii'))
-            
-            elif msg.decode('ascii').startswith('BAN'):
-                if nicknames[clients.index(client)] == 'admin':
-                    name_to_ban = msg.decode('ascii')[4:]
-                    kick_user(name_to_ban)
-                    with open('bans.txt', 'a') as f:
-                        f.write(f'{name_to_ban}\n')
-                    print(f'{name_to_ban} was BANNED!')
-                else:
-                    client.send('Command was refused!'.encode('ascii'))
-            
+
+            # ignores null messages
+            if len(message) - len(nicknames[clients.index(client)]) <=2:
+                pass
+
             else:
-                broadcast(message)
-                print(message)
+                if msg.decode('ascii').startswith('KICK'):
+                    if nicknames[clients.index(client)] == 'admin':
+                        name_to_kick = msg.decode('ascii')[5:]
+                        kick_user(name_to_kick)
+                    else:
+                        client.send('Command was refused!'.encode('ascii'))
+                
+                elif msg.decode('ascii').startswith('BAN'):
+                    if nicknames[clients.index(client)] == 'admin':
+                        name_to_ban = msg.decode('ascii')[4:]
+                        kick_user(name_to_ban)
+                        with open('bans.txt', 'a') as f:
+                            f.write(f'{name_to_ban}\n')
+                        print(f'{name_to_ban} was BANNED!')
+                    else:
+                        client.send('Command was refused!'.encode('ascii'))
+                
+                else:
+                    broadcast(message)
+                    print(f"{actualTime()}: {message}")
         except:
             if client in clients:
                 # Removing And Closing Clients
