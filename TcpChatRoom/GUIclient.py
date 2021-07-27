@@ -1,26 +1,32 @@
 import socket
 import threading
+import tkinter.ttk as ttk
 
+from tkinter import *
 from getpass import getpass
 from datetime import datetime
 
-# Choosing nickname
-nickname = input('Choose your nickname: ')
-if nickname == 'admin':
-    password = getpass('Enter password for admin: ')
-
-# Connecting to server
-client =  socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(('127.0.0.1', 55555))
-
-# variables
 stop_thread = False
 
-# Gets actual time
-def actualTime():
-    now = datetime.now()
-    nowf = now.strftime('%H:%M:%S')
-    return nowf
+win = Tk()
+win.title("TcpChatRoom")
+text = StringVar()
+
+entry = ttk.Entry(win, textvariable=text)
+entry.pack()
+#entry.grid(row=0, columnspan=2)
+
+
+def serverConnect(ip, port):
+    client =  socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    client.connect((ip, port))
+
+def getMsg():
+    response = entry.get()
+    if len(response) <= 0:
+        pass
+    else:
+        return response
 
 # listening to server and sending nickname
 def receive():
@@ -58,29 +64,27 @@ def receive():
             client.close()
             break
 
-# sending message to server
-def write():
-    while True:
-        if stop_thread:
-            break
-        else:
-            message = f'{nickname}: {input("> ")}'
+label = Label( win, textvariable=text, relief=RAISED )
 
-            if message[len(nickname)+2:].startswith('/'):
-                if nickname == 'admin':
-                    if message[len(nickname)+2:].startswith('/kick'):
-                        client.send(f'KICK {message[len(nickname)+2+6:]}'.encode('ascii'))
-                    
-                    elif message[len(nickname)+2:].startswith('/ban'):
-                        client.send(f'BAN {message[len(nickname)+2+5:]}'.encode('ascii'))
-                else:
-                    print('Commands can only be executed by the admin!')
-            else:
-                client.send(message.encode('ascii'))
+text.set("Nickname: ")
+label.pack()
+
+nickname = getMsg()
+
+print(nickname)
+
+# serverConnect('127.0.0.1', 55555)
+
+
+button_send = ttk.Button(win, text=">", command=getMsg)
+button_send.pack()
+#button_send.grid(row=0, column=3)
+
+win.mainloop()
 
 # Starting Threads For Listening And Writing
 receive_thread = threading.Thread(target=receive)
 receive_thread.start()
 
-write_thread = threading.Thread(target=write)
+write_thread = threading.Thread(target=getMsg)
 write_thread.start()
