@@ -8,19 +8,19 @@ symbols = '!@#$%*()_-+=§,.<>;:/?[]~|+'
 length = int(input("length: "))
 amount = int(input("amount: "))
 
-a = []
+choice = []
 
 count = 0
 
 print("upper, lower, nums, symbols [1- True / NONE/NULL - False]")
 
 for x in range(4):
-    a.append(input(">> "))
-print(f'{a}\n')
+    choice.append(input(">> "))
+print(f'{choice}\n')
 
 all = ' '
 
-upper, lower, nums, syms = a
+upper, lower, nums, syms = choice
 
 if upper:
     all += uppercase_letters
