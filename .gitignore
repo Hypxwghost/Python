@@ -1,4 +1,3 @@
-.gitignore
 TcpChatRoom/bans.txt
 __pycache__
 test.py
