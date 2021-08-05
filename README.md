@@ -30,4 +30,4 @@
 
 <img src='https://user-images.githubusercontent.com/60857997/110226105-03137600-7ecb-11eb-964b-dc5dce16cfad.png' width=300>
 
-#### Made with [Pygame](https://www.pygame.org/wiki/about) too !
+#### Made with [Pygame](https://www.pygame.org/wiki/about) too !!
