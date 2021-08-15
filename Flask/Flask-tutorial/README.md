@@ -3,7 +3,7 @@
 
 ## Running:
 # Windows
-```shell
+``` powershell
 python3 -m venv venv
 . venv/Scripts/activate
 pip3 install -r requirements.txt
@@ -14,7 +14,7 @@ $env:FLASK_ENV='development'
 Then go to http://127.0.0.1:5000/
 
 # Linux
-```
+``` shell
 python3 -m venv venv
 . venv/activate
 pip3 install -r requirements.txt
