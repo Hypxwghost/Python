@@ -1,16 +1,15 @@
-import pygame
-from pygame.locals import *
-
+from random import randint
 from sys import exit
 
-from random import randint
+import pygame
+from pygame.locals import *
 
 pygame.init()
 
 largura = 640
 altura = 480
-x = largura/2 
-y = altura/2
+x = largura / 2
+y = altura / 2
 
 x_azul = randint(40, 600)
 y_azul = randint(50, 430)

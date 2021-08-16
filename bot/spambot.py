@@ -1,6 +1,8 @@
-import pyautogui
 import time
+
 import keyboard
+import pyautogui
+
 time.sleep(5)
 f = open("loremv2.txt", 'r')
 for word in f:

@@ -1,6 +1,7 @@
 import math
 import time
-from player import HumanPlayer, RandomComputerPlayer, SmartComputerPlayer
+
+from player import HumanPlayer, SmartComputerPlayer
 
 
 class TicTacToe():
@@ -13,13 +14,13 @@ class TicTacToe():
         return [' ' for _ in range(9)]
 
     def print_board(self):
-        for row in [self.board[i*3:(i+1) * 3] for i in range(3)]:
+        for row in [self.board[i * 3:(i + 1) * 3] for i in range(3)]:
             print('| ' + ' | '.join(row) + ' |')
 
     @staticmethod
     def print_board_nums():
         # 0 | 1 | 2
-        number_board = [[str(i) for i in range(j*3, (j+1)*3)] for j in range(3)]
+        number_board = [[str(i) for i in range(j * 3, (j + 1) * 3)] for j in range(3)]
         for row in number_board:
             print('| ' + ' | '.join(row) + ' |')
 
@@ -34,12 +35,12 @@ class TicTacToe():
     def winner(self, square, letter):
         # check the row
         row_ind = math.floor(square / 3)
-        row = self.board[row_ind*3:(row_ind+1)*3]
+        row = self.board[row_ind * 3:(row_ind + 1) * 3]
         # print('row', row)
         if all([s == letter for s in row]):
             return True
         col_ind = square % 3
-        column = [self.board[col_ind+i*3] for i in range(3)]
+        column = [self.board[col_ind + i * 3] for i in range(3)]
         # print('col', column)
         if all([s == letter for s in column]):
             return True
@@ -65,7 +66,6 @@ class TicTacToe():
 
 
 def play(game, x_player, o_player, print_game=True):
-
     if print_game:
         game.print_board_nums()
 
@@ -92,7 +92,6 @@ def play(game, x_player, o_player, print_game=True):
 
     if print_game:
         print('It\'s a tie!')
-
 
 
 if __name__ == '__main__':

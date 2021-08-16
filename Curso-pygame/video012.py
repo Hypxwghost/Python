@@ -1,16 +1,18 @@
+from sys import exit
+
 import pygame
 from pygame.locals import *
-from sys import exit
 
 pygame.init()
 
 largura = 640
 altura = 480
 
-PRETO = (0, 0 ,0)
+PRETO = (0, 0, 0)
 
 tela = pygame.display.set_mode((largura, altura))
 pygame.display.set_caption('Sprites')
+
 
 class Sapo(pygame.sprite.Sprite):
     def __init__(self):
@@ -28,7 +30,7 @@ class Sapo(pygame.sprite.Sprite):
         self.sprites.append(pygame.image.load('sprites/attack_8.png'))
         self.sprites.append(pygame.image.load('sprites/attack_9.png'))
         self.sprites.append(pygame.image.load('sprites/attack_10.png'))
-        
+
         self.atual = 0
 
         self.image = self.sprites[self.atual]
@@ -49,6 +51,7 @@ class Sapo(pygame.sprite.Sprite):
                 self.animar = False
             self.image = self.sprites[int(self.atual)]
         self.image = pygame.transform.scale(self.image, (128 * 3, 64 * 3))
+
 
 todas_as_sprites = pygame.sprite.Group()
 

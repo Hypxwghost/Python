@@ -5,36 +5,44 @@ from markupsafe import escape
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def index():
-   return 'index'
+    return 'index'
+
 
 @app.route('/login')
 def login():
     if Request.method == 'POST':
-       return 'doTheLogin()'
+        return 'doTheLogin()'
     else:
         return 'showTheLoginForm()'
 
-@app.route('/user/<username>')  
+
+@app.route('/user/<username>')
 def profile(username):
-   return f'{escape(username)}\'s profile'
+    return f'{escape(username)}\'s profile'
+
 
 @app.route('/post/<int:post_id>')
 def showPost(post_id):
     return f'Post {post_id}'
 
+
 @app.route('/path/<path:subpath>')
 def showSubpath(subpath):
     return f'Subpath {escape(subpath)}'
 
+
 @app.route('/projects/')
 def projects():
-   return 'The project page'
+    return 'The project page'
+
 
 @app.route('/about')
 def about():
     return "The about page"
+
 
 with app.test_request_context():
     print(url_for('index'))

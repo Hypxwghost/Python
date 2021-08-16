@@ -1,5 +1,6 @@
 from random import randint
 from time import sleep
+
 pc = 1
 jogador = 0
 contador = 0

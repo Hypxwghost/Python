@@ -3,15 +3,18 @@ from flask.templating import render_template
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def index():
-   return render_template('index.html')
+    return render_template('index.html')
+
 
 @app.route('/read')
 def read():
     resp = make_response(render_template(...))
     resp.set_cookie('username', 'the username')
     return resp
+
 
 @app.route('/store')
 def store():

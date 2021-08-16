@@ -1,16 +1,18 @@
+from sys import exit
+
 import pygame
 from pygame.locals import *
-from sys import exit
 
 pygame.init()
 
 largura = 640
 altura = 480
 
-PRETO = (0,0,0)
+PRETO = (0, 0, 0)
 
 tela = pygame.display.set_mode((largura, altura))
 pygame.display.set_caption('Sprites')
+
 
 class Personagem(pygame.sprite.Sprite):
     def __init__(self):
@@ -21,7 +23,7 @@ class Personagem(pygame.sprite.Sprite):
         self.sprites.append(pygame.image.load('homem_terno/sprite_2.png'))
         self.atual = 0
         self.image = self.sprites[self.atual]
-        self.image = pygame.transform.scale(self.image, (32*7, 32*7))
+        self.image = pygame.transform.scale(self.image, (32 * 7, 32 * 7))
 
         self.rect = self.image.get_rect()
         self.rect.topleft = 300, 255
@@ -31,8 +33,7 @@ class Personagem(pygame.sprite.Sprite):
         if self.atual >= len(self.sprites):
             self.atual = 0
         self.image = self.sprites[int(self.atual)]
-        self.image = pygame.transform.scale(self.image, (32*7, 32*7))
-
+        self.image = pygame.transform.scale(self.image, (32 * 7, 32 * 7))
 
 
 todas_as_sprites = pygame.sprite.Group()
@@ -51,7 +52,7 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             exit()
-    
-    tela.blit(imagem_fundo, (0,0))
+
+    tela.blit(imagem_fundo, (0, 0))
     todas_as_sprites.update()
     pygame.display.flip()

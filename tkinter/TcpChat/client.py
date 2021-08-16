@@ -8,6 +8,7 @@ from tkinter import simpledialog
 HOST = '127.0.0.1'
 PORT = 55555
 
+
 class Client:
     def __init__(self, host, port):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -85,5 +86,6 @@ class Client:
                 print("ERROR")
                 self.sock.close()
                 break
+
 
 client = Client(HOST, PORT)

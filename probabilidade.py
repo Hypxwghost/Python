@@ -1,12 +1,13 @@
 # calculo de probabilidade
 def fatorial(num):
-	fatorial = 1
-	while num > 0:
-		fatorial *= num
-		num -= 1
-	return fatorial
-	
+    fat = 1
+    while num > 0:
+        fat *= num
+        num -= 1
+    return fat
+
+
 dividendo = fatorial(365)
 divisor = fatorial(335) * 365 ** 30
 
-print(str(1-dividendo/divisor)[:5])
+print(str(1 - dividendo / divisor)[:5])

@@ -1,5 +1,6 @@
 from random import randint
 from time import sleep
+
 pc = randint(0, 5)  # gera número aleatório
 print('-=-' * 20)
 print('Vou "pensar" em um número entre 0 e 5.Tente adivinhar')

@@ -1,11 +1,10 @@
 # https://www.youtube.com/watch?v=yFP8_C3cQFo
 
-import pygame
-from pygame.locals import *
-
+from random import randint
 from sys import exit
 
-from random import randint
+import pygame
+from pygame.locals import *
 
 pygame.init()
 pygame.mixer.init()
@@ -18,8 +17,8 @@ som_colisao = pygame.mixer.Sound('Curso-pygame/coin.wav')
 
 largura = 640
 altura = 480
-x_cobra = int(largura/2 )
-y_cobra = int(altura/2)
+x_cobra = int(largura / 2)
+y_cobra = int(altura / 2)
 
 velocidade = 5
 
@@ -44,21 +43,24 @@ relogio = pygame.time.Clock()
 
 lista_cobra = []
 
+
 def aumenta_cobra(lista_cobra):
     for XeY in lista_cobra:
         pygame.draw.rect(tela, (0, 255, 0), (XeY[0], XeY[1], 20, 20))
+
 
 def reiniciar_jogo():
     global pontos, comprimento_inicial, x_cobra, y_cobra, lista_cobra, lista_cabeca, y_maca, x_maca, morreu
     pontos = 0
     comprimento_inicial = 5
-    x_cobra = int(largura/2)
-    y_cobra = int(altura/2)
+    x_cobra = int(largura / 2)
+    y_cobra = int(altura / 2)
     lista_cobra = []
     lista_cabeca = []
     x_maca = randint(40, 600)
     y_maca = randint(50, 430)
     morreu = False
+
 
 while True:
     relogio.tick(60)
@@ -150,8 +152,8 @@ while True:
                     if event.key == K_ESCAPE:
                         pygame.quit()
                         exit()
-                        
-            rect_texto.center = (largura//2, altura//2)
+
+            rect_texto.center = (largura // 2, altura // 2)
             tela.blit(texto_formatado, rect_texto)
             pygame.display.update()
 
@@ -159,7 +161,7 @@ while True:
         del lista_cobra[0]
 
     aumenta_cobra(lista_cobra)
-    
+
     tela.blit(texto_formatado, (450, 40))
     tela.blit(texto_formatado_recorde, (320, 60))
     pygame.display.update()

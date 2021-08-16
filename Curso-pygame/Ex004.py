@@ -1,13 +1,14 @@
+from sys import exit
+
 import pygame
 from pygame.locals import *
-from sys import exit
 
 pygame.init()
 
 largura = 640
 altura = 480
-x = largura/2 
-y = altura/2
+x = largura / 2
+y = altura / 2
 
 tela = pygame.display.set_mode((largura, altura))
 pygame.display.set_caption('Jogo')

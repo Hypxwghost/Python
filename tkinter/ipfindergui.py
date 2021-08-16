@@ -1,8 +1,8 @@
 import socket
-
 from tkinter import *
 
 from requests import get
+
 
 class Application:
     def __init__(self, master=None):
@@ -16,7 +16,7 @@ class Application:
         self.btn["font"] = ("Calibri", "9")
         self.btn["width"] = 10
         self.btn.bind("<Button-1>", self.getIp)
-        self.btn.pack ()
+        self.btn.pack()
 
     def getIp(self, event):
         if self.msg["text"] == "Ipfinder":
@@ -26,6 +26,7 @@ class Application:
             public_ip = f'Public IP: {ip}'
             self.msg["text"] = f"{hostname}\n {local_ip}\n  {public_ip}"
             self.btn.destroy()
+
 
 root = Tk()
 Application(root)

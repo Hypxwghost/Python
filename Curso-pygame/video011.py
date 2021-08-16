@@ -11,6 +11,7 @@ class Cachorro:
     def correr(self):
         print(f'{self.nome} está correndo')
 
+
 cachorro1 = Cachorro('Toby', 'marrom', 5, 'grande')
 
 # print(cachorro1.nome)

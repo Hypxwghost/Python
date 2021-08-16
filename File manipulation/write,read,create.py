@@ -1,6 +1,6 @@
 #  Creating, Reading and writing in file 'lorem.txt'
 with open('lorem.txt', 'w+') as file:
-#  Writing
+    #  Writing
     file.write('Line 1\n')
     file.write('Line 2\n')
     file.write('Line 3\n')

@@ -3,6 +3,7 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
+
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':

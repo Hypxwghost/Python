@@ -1,4 +1,5 @@
 import socket
+
 from requests import get
 
 print('Hostname: ', socket.gethostname())

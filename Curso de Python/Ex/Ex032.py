@@ -1,4 +1,5 @@
 from datetime import date
+
 ano = int(input('Que ano quer anallisar? Coloque 0 para analisar o ano atual '))
 if ano == 0:
     ano = date.today().year

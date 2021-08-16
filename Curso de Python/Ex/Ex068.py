@@ -1,4 +1,5 @@
 from random import randint
+
 cont = 0
 while True:
     try:
@@ -23,7 +24,8 @@ while True:
             t = 'Par'
         else:
             t = 'Ímpar'
-        print(f'O pc escolheu \033[34m{pc} \033[31m[{p}]\033[m,usuario escolheu \033[35m{num} \033[32m[{j}]\033[m e o total foi \033[36m{pc + num} \033[34m[{t}]\033[m.')
+        print(
+            f'O pc escolheu \033[34m{pc} \033[31m[{p}]\033[m,usuario escolheu \033[35m{num} \033[32m[{j}]\033[m e o total foi \033[36m{pc + num} \033[34m[{t}]\033[m.')
         if opcao == 'P':
             if res == 1:
                 print('\033[4;31mVocê perdeu!,mais sorte na próxima!/\33[m')

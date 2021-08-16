@@ -1,11 +1,10 @@
-
 # João Tinti's script, https://github.com/joaotinti75/Pokemon_Classification/blob/master/google_imgs_downloader_v2.py
 
 import requests
 from bs4 import BeautifulSoup
 
-def google_images_download(directory, search, num_of_img):
 
+def google_images_download(directory, search, num_of_img):
     search_mod = search.upper()
     search_mod = search_mod.split()
 
@@ -53,7 +52,7 @@ def google_images_download(directory, search, num_of_img):
                                 if i == num_of_img:
                                     break
                                 else:
-                                    #print(link, '-', i)
+                                    # print(link, '-', i)
                                     print(image.get('src'), '-', i)
                                     repeat_img.append(image.get('src'))
                                     f.write(img_response.content)
@@ -86,7 +85,7 @@ def google_images_download(directory, search, num_of_img):
                     soup = BeautifulSoup(response.text, 'html.parser')
 
                     images = soup.find_all('img')
-                    
+
                     for image in images:
                         if i == num_of_img:
                             break
@@ -105,7 +104,7 @@ def google_images_download(directory, search, num_of_img):
                                         if i == num_of_img:
                                             break
                                         else:
-                                            #print(link, '-', i)
+                                            # print(link, '-', i)
                                             print(image.get('src'), '-', i)
                                             repeat_img.append(image.get('src'))
                                             f.write(img_response.content)
@@ -126,8 +125,9 @@ def google_images_download(directory, search, num_of_img):
 
 if __name__ == '__main__':
     while True:
-        print(50*'=')
-        print("In which directory do you want to save the images?\ne.g. C:/Users/daniel/Desktop/images \n(you can use \ as well)\nDON'T USE ''")
+        print(50 * '=')
+        print(
+            "In which directory do you want to save the images?\ne.g. C:/Users/daniel/Desktop/images \n(you can use \ as well)\nDON'T USE ''")
         print('')
         directory = str(input('Directory: '))
         print('')

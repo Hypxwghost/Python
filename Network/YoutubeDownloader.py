@@ -19,7 +19,7 @@ for x, video in enumerate(video_list):
         if filetype == 1:
             print('Some videos may have no audio')
             confirm = input('Download in 1080p(all my tests results in video without audio)?  [Y/N]').upper().strip()[0]
-            if filetype == 1 and confirm == 'Y': # here script starts trying all resolutions
+            if filetype == 1 and confirm == 'Y':  # here script starts trying all resolutions
                 stream = v.streams.get_by_itag(137)
                 print(f'Downloading {x}')
                 stream.download()
@@ -63,7 +63,7 @@ for x, video in enumerate(video_list):
                                     print('\033[4;31mAll downloads failed,verify URL or try another video')
     except:
         print('Everything failed')
-        
+
 if filetype == 2:  # audio
     try:
         print('Downloading..')

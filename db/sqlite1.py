@@ -12,7 +12,7 @@ choice = input('''
 if choice == '1':
     cur.execute(''' SELECT count(name) FROM sqlite_master WHERE type='table' AND name='stocks' ''')
 
-    if cur.fetchone()[0]==0 : {
+    if cur.fetchone()[0] == 0: {
         # create table
         cur.execute('''
             CREATE TABLE stocks (

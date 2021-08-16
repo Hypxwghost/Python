@@ -1,9 +1,9 @@
 # https://www.youtube.com/watch?v=k7PLSocEREs&list=PLJ8PYFcmwFOxtJS4EZTGEPxMEo4YdbxdQ
 
+from sys import exit
+
 import pygame
 from pygame.locals import *
-
-from sys import exit
 
 pygame.init()
 

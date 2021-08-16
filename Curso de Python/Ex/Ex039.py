@@ -1,4 +1,5 @@
 import datetime
+
 ano = int(input('\033[32mDigite seu ano de nascimento: \033[m'))
 dataa = datetime.date.today()
 anoa = dataa.year
