@@ -9,7 +9,7 @@
 ``` powershell
 python3 -m venv venv
 . venv/Scripts/activate
-pip3 install -r requirements.txt
+pip install -e .
 $env:FLASK_APP='flaskr'
 $env:FLASK_ENV='development'
 ```
@@ -21,7 +21,7 @@ Then go to http://127.0.0.1:5000/
 ``` shell
 python3 -m venv venv
 . venv/activate
-pip3 install -r requirements.txt
+pip install -e .
 export FLASK_APP='flaskr'
 export FLASK_ENV='development'
 ```
