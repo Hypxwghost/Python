@@ -1,3 +1,5 @@
+# João Tinti's script, https://github.com/joaotinti75/Pokemon_Classification/blob/master/google_imgs_downloader_v2.py
+# adicionado apenas removedor de arquivos
 import requests
 from os import listdir, remove
 from PIL import Image
