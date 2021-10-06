@@ -1,7 +1,7 @@
 # João Tinti's script, https://github.com/joaotinti75/Pokemon_Classification/blob/master/google_imgs_downloader_v2.py
 # adicionado apenas removedor de arquivos
 import requests
-from os import listdir, remove
+import os
 from PIL import Image
 from bs4 import BeautifulSoup
 
@@ -14,7 +14,7 @@ def clearImages(directory):
 	width = int(input('Min width to remove: '))
 	print('Cleaning images...\n')
 
-	for image in listdir(directory):
+	for image in os.listdir(directory):
 		img_list.append(image)
 		width_list.append(Image.open(directory+image).width)
 		height_list.append(Image.open(directory+image).height)
@@ -22,7 +22,7 @@ def clearImages(directory):
 
 	for x in width_list:
 		if x < width:
-			remove(directory+img_list[count])
+			os.remove(directory+img_list[count])
 		count += 1
 	count = 0
 	print('Widht found\n')
@@ -30,7 +30,7 @@ def clearImages(directory):
 	for x in height_list:
 		try:
 			if x < height:
-				remove(directory+img_list[count])
+				os.remove(directory+img_list[count])
 			count += 1
 		except FileNotFoundError:
 			pass
@@ -38,9 +38,8 @@ def clearImages(directory):
 	print('height found\n')
 	print('All done\n')
 
-
 def googleImagesDownload(directory, search, num_of_img):
-	
+
 	search_mod = search.upper()
 	search_mod = search_mod.split()
 
@@ -149,30 +148,41 @@ def googleImagesDownload(directory, search, num_of_img):
 			else:
 				break
 	print(f'\n{i} images were downloaded\n')
-	
+
 if __name__ == '__main__':
 	while True:
 		try:
-			directory = str(input('Directory: '))
+			directory = input('Directory: ')
+			if directory == '':
+				if 'images' in os.listdir():
+					pass
+				else:
+					os.mkdir('./images')
+				directory = './images/'
+			else:
+				if directory[-1] != '/':
+					directory += '/'
+			print(directory)
+
 			#directory = '/home/khalli/Desktop/teste/'
 			search = input('What images do you want to download: ')
 			num_of_img = int(input('How many images: '))
 			clear = input('Clear small images ? [Y/N]\n').upper().strip()
 			print('\nDownloading...Check your directory\n')
-			
+
 			googleImagesDownload(directory, search, num_of_img)
 
 			if clear in 'SY':
 				clearImages(directory)
 			else:
 				pass
-			
-			exit_question = str(input('Do you want to quit? [Y/N]')).upper().split()
+
+			exit_question = input('Do you want to quit? [Y/N]').upper().strip()
 			if exit_question in 'SY':
 				print('Bye!')
 				break
 			else:
 				pass
-			
+
 		except ValueError:
 			print('\nWrong value type!\n')

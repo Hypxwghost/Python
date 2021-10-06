@@ -10,10 +10,10 @@ pygame.init()
 pygame.mixer.init()
 
 pygame.mixer.music.set_volume(0.3)
-musica = pygame.mixer.music.load('Curso-pygame/music.wav')
+musica = pygame.mixer.music.load('Curso-pygame/snake-game/music.wav')
 pygame.mixer.music.play(-1, 0, 200)
 
-som_colisao = pygame.mixer.Sound('Curso-pygame/coin.wav')
+som_colisao = pygame.mixer.Sound('Curso-pygame/snake-game/coin.wav')
 
 largura = 640
 altura = 480
