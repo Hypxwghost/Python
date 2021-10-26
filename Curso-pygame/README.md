@@ -1,0 +1,1 @@
+# Repositório do [curso pygame](https://www.youtube.com/watch?v=BT2cjrxGpWo&list=PLJ8PYFcmwFOxtJS4EZTGEPxMEo4YdbxdQ) do [João Tinti](https://www.youtube.com/channel/UChjskKGW9ebyuVgNYpEZ92Q)
