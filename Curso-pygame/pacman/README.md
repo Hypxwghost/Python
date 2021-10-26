@@ -1,0 +1,1 @@
+# Repositório do projeto [Pacman](https://www.youtube.com/watch?v=SPwaxehPpJc) do curso pygame do [João Tinti](https://www.youtube.com/channel/UChjskKGW9ebyuVgNYpEZ92Q)
